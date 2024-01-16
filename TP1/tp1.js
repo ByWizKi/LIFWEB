@@ -4,16 +4,51 @@ console.log("Début du script");
 
 /* Exercice 1 : Tutoriel */
 function iterate_array(arr) {
-  /* TODO les 5 variantes */
+  for (const elt of arr) {
+    console.log(elt);
+  }
+
+  // for(ind in arr){
+  // 	console.log(arr[ind]);
+  // }
+
+  // for(let i = 0; i < arr.length; i++){
+  // 	console.log(arr[i]);
+  // }
+
+  // let i = 0;
+  // while (i < arr.length){
+  // 	console.log(arr[i]);
+  // 	i++;
+  // }
+
+  // arr.forEach((elt) => console.log(elt)); 
 }
 
-const my_object = {
-  /* TODO */
-};
+let my_object = { x: "Me", y: 21 };
+
+my_object.do = function () {
+  console.log(this.x, this.y);
+}
 
 function fibonacci(n) {
-  /* TODO */
-  return 0;
+
+  console.debug(`[js] fibonacci(${n})`);
+  let arr = [];
+  if (n == 0) {
+    arr = [0];
+  }
+  else if (n == 1) {
+    arr = [0, 1];
+  }
+  arr[0] = 0;
+  arr[1] = 1;
+  if (n > 1) {
+    for (let i = 2; i <= n; i++) {
+      arr[i] = arr[i - 1] + arr[i - 2];
+    }
+  }
+  return arr;
 }
 
 function test() {
@@ -28,31 +63,70 @@ function test() {
 
 /* Exercice 1 : 99 Bottles of Beer */
 function bottles(beers) {
-  console.debug(`[js] bottles (OK) (${beers}`);
-  const res = "";
+  console.debug("[js] bottles (OK) (${beers}");
+  let res = "";
 
   /* TODO */
+  if (beers == 0) {
+    res = "No more bottles of beer on the wall, no more bottles of beer. Go to the store and buy some more, 99 bottles of beer on the wall.";
+  } 
+  
+  else if (beers == 1) {
+    res = "1 bottle of beer on the wall, 1 bottle of beer. Take one down and pass it around, no more bottles of beer on the wall.";
+  } 
 
+  else if (beers == 2) {
+    res = "2 bottles of beer on the wall, 2 bottles of beer. Take one down and pass it around, 1 bottle of beer on the wall.";
+  }
+
+  else {
+    res = String(beers) + " bottles of beer on the wall, " + String(beers) + " bottles of beer. Take one down and pass it around, " + String(beers - 1) + " bottles of beer on the wall.";
+  }
   return res;
 }
 
 /* Exercice 2 : fonction range */
 function range(stop, start, step) {
-  console.debug(`[js] range(${stop}, ${start}, ${step})`);
-  const res = [];
+  console.log("[js] range(${stop}, ${start}, ${step})");
+  let res = [];
 
   /* TODO */
-
+  for (let i = start ?? 0; i < stop; i += step ?? 1) {
+    res.push(i);
+  }
   return res;
 }
 
 /* Exercice 3 : Calculatrice polonaise inverse */
 function evaluate(expr) {
-  console.debug(`[js] evaluate1 (${expr})`);
-  const stack = [];
+  console.log('[js] evaluate1 (${expr})');
+  let stack = [];
 
   /* TODO */
-
+  let expr_split = expr.split(" ");
+  let arg1;
+  let arg2;
+  for(let i = 0; i < expr_split.length; i++){
+    if (expr_split[i] == "+") {
+      arg1 = stack.pop();
+      arg2 = stack.pop();
+      stack.push(arg2 + arg1);
+    } else if (expr_split[i] == "-") {
+      arg1 = stack.pop();
+      arg2 = stack.pop();
+      stack.push(arg2 - arg1);
+    } else if (expr_split[i] == "*") {
+      arg1 = stack.pop();
+      arg2 = stack.pop();
+      stack.push(arg2 * arg1);
+    } else if (expr_split[i] == "/") {
+      arg1 = stack.pop();
+      arg2 = stack.pop();
+      stack.push(arg2 / arg1);
+    } else {
+      stack.push(Number(expr_split[i]));
+    }
+  }
   return stack.pop() ?? 0;
 }
 
@@ -71,7 +145,7 @@ document.addEventListener(
     const $output1 = document.getElementById("output1");
 
     document.getElementById("eval1").onclick = () => {
-      $output1.innerHTML = tutorial_button();
+      $output1.innerHTML = test();
     };
 
     /* Exercice 2 : 99 Bottles of Beer */
@@ -96,11 +170,11 @@ document.addEventListener(
     };
 
     document.getElementById("eval3").onclick = () => {
-      const stop = Number(input3stop.value);
-      const start = input3start.value !== "" ? Number(input3start.value) : undefined;
-      const step = input3step.value !== "" ? Number(input3step.value) : undefined;
+      const stop = Number($input3stop.value);
+      const start = $input3start.value !== "" ? Number(input3start.value) : undefined;
+      const step = $input3step.value !== "" ? Number(input3step.value) : undefined;
 
-      output3.innerHTML += `[ ${range(stop, start, step)} ]<br>`;
+      $output3.innerHTML += `[ ${range(stop, start, step)} ]<br>`;
     };
 
     /* Exercice 5 : Calculatrice polonaise inverse */
