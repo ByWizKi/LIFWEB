@@ -57,7 +57,7 @@ boutonToggle.addEventListener('click', btnToggleHandler);
 
 //Exo3
 
-// Fonction handler pour l'image 
+// Fonction handler pour l'image
 function handlerImage(event) {
     console.log('clic sur une image');
     event.preventDefault();
@@ -111,7 +111,7 @@ divMouse.className = 'dot';
 
 
 const styleMouse = document.createElement('style');
-styleMouse.innerText = `.dot {  
+styleMouse.innerText = `.dot {
 pointer-events: none;
 height: 50px;
 width: 50px;
