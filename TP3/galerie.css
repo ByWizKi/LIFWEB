@@ -1,0 +1,33 @@
+ul.no-bullets {
+  list-style-type: none;
+  /* Remove bullets */
+  padding: 0;
+  /* Remove padding */
+  margin: 0;
+  /* Remove margins */
+}
+
+#image-href:valid {
+  border: 1px solid green;
+}
+
+#image-href:invalid {
+  border: 1px solid red;
+}
+
+.image_button_container {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.image_button_container button {
+  margin: 5px;
+  background-color: #69c62b;
+}
+
+.image_button_container img {
+  max-width: 70%;
+  margin: 5px;
+}
