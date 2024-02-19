@@ -1,0 +1,14 @@
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image-container img {
+    width: 24%;
+}
+
+.selected {
+    outline: 2px solid red;
+}

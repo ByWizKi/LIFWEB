@@ -41,7 +41,6 @@ $addButton.addEventListener("click", () => {
     handler_down(image_button_container.id);
   });
   // si le bouton est survole on ajoute un handler
-  // si le bouton est survole on ajoute un handler
   button_down.addEventListener("mouseover", () => {
     handler_mouseover_button(image_button_container.id);
   });

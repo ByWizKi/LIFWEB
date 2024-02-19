@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+
+    <title>Exemples CM2</title>
+
+    <script type="module" src="gallerie.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css" />
+    <link rel="stylesheet" href="gallerie.css" />
+  </head>
+  <body>
+    <h1>Exemples CM2</h1>
+
+    <section>
+      <h2>Propagation des événements</h2>
+
+      <div style="border: 1px solid grey" id="container">
+        <button>Cliquez-moi !</button>
+      </div>
+      <pre id="output"></pre>
+    </section>
+
+    <section>
+      <h2>Génération de galerie de chats</h2>
+
+      <div id="cats-container" class="image-container"></div>
+    </section>
+
+    <section>
+      <h2>Utilisation de templates</h2>
+
+      <template id="alice-template">
+        <figure>
+          <img class="alice" src="alice.svg" role="img" alt="Silhouette" width="300" />
+          <figcaption>
+            Silhouette of crouching long haired character in dress and short boots
+          </figcaption>
+        </figure>
+      </template>
+
+      <div id="alice-container"></div>
+    </section>
+
+    <section>
+      <h2>Exemple <code>lit-html</code></h2>
+
+      <div id="lit-container"></div>
+    </section>
+  </body>
+</html>

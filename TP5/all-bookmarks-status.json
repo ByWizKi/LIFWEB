@@ -1,0 +1,27 @@
+[
+  {
+    "uri": "https://docs.python.org/3/faq/index.html",
+    "title": "Python Frequently Asked Questions — Python 3.9.1 documentation",
+    "status": 200
+  },
+  {
+    "uri": "http://www.pythontutor.com/",
+    "title": "Python Tutor - Visualize Python, Java, C, C++, JavaScript, TypeScript, and Ruby code execution",
+    "status": 200
+  },
+  {
+    "uri": "https://www.labri.fr/perso/nrougier/from-python-to-numpy/",
+    "title": "From Python to Numpy",
+    "status": 200
+  },
+  {
+    "uri": "https://the-site-that-do-no-exists/",
+    "title": "This website do not exists",
+    "status": -1
+  },
+  {
+    "uri": "https://httpbin.org/status/404",
+    "title": "The website that answers 404",
+    "status": 404
+  }
+]
