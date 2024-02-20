@@ -20,27 +20,43 @@ $button.addEventListener("click", handle);
  * Gallerie de chats
  ******************************************************************************/
 
+// Recuperation de la gallerie
+const ma_gallerie = document.querySelectorAll("#cats-container");
+
 /******************************************************************************
  * Methode avec les promesses
  ******************************************************************************/
-// Recuperation de la gallerie
-const ma_gallerie = document.querySelectorAll("#cats-container");
 // Creation de la promesse
-const promesse = fetch("https://api.thecatapi.com/v1/images/search?limit=10");
-promesse.then((reponse) => {
-  reponse.json().then((data) => {
-    ma_gallerie.forEach((container) => {
-      data.forEach((cat) => {
-        const $cat = document.createElement("img");
-        $cat.src = cat.url;
-        container.append($cat);
-      });
+// const promesse = fetch("https://api.thecatapi.com/v1/images/search?limit=10");
+// promesse.then((reponse) => {
+//   reponse.json().then((data) => {
+//     ma_gallerie.forEach((container) => {
+//       data.forEach((cat) => {
+//         const $cat = document.createElement("img");
+//         $cat.src = cat.url;
+//         container.append($cat);
+//       });
+//     });
+//   });
+// });
+
+/******************************************************************************
+ * Methode avec les async/await
+ ******************************************************************************/
+const async_gallerie = async () => {
+  const reponse = await fetch(
+    "https://api.thecatapi.com/v1/images/search?limit=10"
+  );
+  const data = await reponse.json();
+  ma_gallerie.forEach((container) => {
+    data.forEach((cat) => {
+      const $cat = document.createElement("img");
+      $cat.src = cat.url;
+      container.append($cat);
     });
   });
-});
-
-// Avec Async et await
-
+};
+async_gallerie();
 
 /******************************************************************************
  * Exemple de faille XSS
