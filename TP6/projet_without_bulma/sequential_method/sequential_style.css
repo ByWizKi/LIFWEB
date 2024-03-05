@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eeeeee;
+}
+
+#main_container {
+  width: 800px;
+  height: 500px;
+
+  margin: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50px;
+
+  box-shadow: rgba(0, 0, 0, 0.434) 0px 25px 50px -12px;
+
+  background-color: #be84d7;
+}
+
+#message_container {
+  margin: 4px, 4px;
+  padding: 4px;
+  width: 500px;
+  height: 110px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
