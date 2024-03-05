@@ -66,14 +66,14 @@ async function fetchForAwaitOf(uris) {
  *Bonus fonction promiseAll() 
  **************************************************/
 // On a besoin d'un tableau de promesse en argument
- function promiseAll(promises) {
+function promiseAll(promises) {
   return new Promise((resolve, reject) => {
     let results = [];
     let completedPromises = 0;
 
     promises.forEach((promise, index) => {
-      Promise.resolve(promise) 
-        .then(result => {
+      Promise.resolve(promise)
+        .then((result) => {
           results[index] = result;
           completedPromises += 1;
           if (completedPromises === promises.length) {
@@ -94,10 +94,9 @@ const head = (uri) =>
     .then((response) => response.status)
     .catch((error) => error.message);
 
-const promises = uris.map(uri => head(uri));
+const promises = uris.map((uri) => head(uri));
 
 // Les promesses resolu
 promiseAll(promises).then(console.log);
-// Err https//the-site-that-do-no-exists/ 
+// Err https//the-site-that-do-no-exists/
 // Res https//pokeapi.co/api/v2/
-
