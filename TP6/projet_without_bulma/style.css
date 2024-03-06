@@ -3,12 +3,12 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-color: #eeeeee;
+  background-color: #6dc170;
 }
 
 #container_button {
-  width: 600px;
-  height: 400px;
+  width: 800px;
+  height: 600px;
 
   padding: 20px;
 
@@ -21,7 +21,7 @@ body {
 
   box-shadow: rgba(0, 0, 0, 0.2) 0px 14px 28px, rgba(0, 0, 0, 0.379) 0px 10px 10px;
 
-  background-color: #6dc170;
+  background-color: #484850;
 }
 
 #title_container_button {

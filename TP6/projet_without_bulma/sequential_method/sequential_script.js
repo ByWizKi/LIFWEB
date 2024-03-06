@@ -3,13 +3,13 @@ const file_selector = document.querySelector("#file_selector");
 const start_button = document.querySelector("#start_button");
 const message_container = document.querySelector("#message_container");
 const progress_number = document.querySelector("#progress_number");
-const progress_bar = document.querySelector("#progress_bar"); 
+const progress_bar = document.querySelector("#progress_bar");
 const home_button = document.querySelector("#home_button");
 
-// function intialisation progress bar
+// function initialisation progress bar
 function initProgressBar(total) {
   progress_bar.value = 0;
-  progress_bar.max = total; 
+  progress_bar.max = total;
 }
 
 // function increment progress bar
@@ -20,9 +20,9 @@ function incrementProgressBar() {
 
 // function get file
 async function getLinks(file_selected) {
-  const baseUrl = "http://lifweb.pages.univ-lyon1.fr/TP4-JS-GitHub/data/";
-  const url = `${baseUrl}${file_selected}`;
   try {
+    const baseUrl = "http://lifweb.pages.univ-lyon1.fr/TP4-JS-GitHub/data/";
+    const url = `${baseUrl}${file_selected}`;
     const response = await fetch(url, { method: "GET" });
     //debug
     //console.log(response);
@@ -58,21 +58,69 @@ async function checkLink(link) {
   }
 }
 
+// Error Selector
+function errorSelector() {
+  //blur effect
+  const blurEffect = document.createElement("div");
+  blurEffect.style.position = "fixed";
+  blurEffect.style.backdropFilter = "blur(5px)";
+  blurEffect.style.width = "100%";
+  blurEffect.style.height = "100%";
+  blurEffect.style.top = "0";
+  blurEffect.style.left = "0";
+  document.body.appendChild(blurEffect);
+
+  //message
+  const message = document.createElement("span");
+  message.textContent = `Select File Please`;
+  message.style.position = "fixed";
+  message.style.userSelect = "none";
+
+  message.style.fontSize = "70px";
+  message.style.fontWeight = "600";
+  message.style.fontFamily = "Fira Sans, sans-serif";
+
+  message.style.color = "#F24A72";
+  message.style.textShadow = "#484850 0px 0px 10px";
+
+  document.body.appendChild(message);
+
+  // set timeout
+  setTimeout(() => {
+    document.body.removeChild(message);
+    document.body.removeChild(blurEffect);
+  }, 2000);
+}
+
 // display link
 async function displayLink(linkCheck) {
+
+  const title = document.createElement("h3");
+  title.textContent = "OUTPUT";
   const message = document.createElement("p");
   message.textContent = linkCheck.url;
   message_container.appendChild(message);
   if (linkCheck.isOk) {
-    message.style.color = "green";
+    message.style.color = "#484850";
+    message.style.fontFamily = "Fira Sans, sans-serif";
+    message.style.fontWeight = "500";
+
   } else {
-    message.style.color = "red";
+    message.style.color = "#F24A72";
+    message.style.fontFamily = "Fira Sans, sans-serif";
+    message.style.fontWeight = "500";
+    message.style.textDecoration = "line-through";
   }
 }
 
 // function start
 async function start() {
+  if (file_selector.value === "") {
+    errorSelector();
+    return;
+  }
   const responseGetLinks = await getLinks(file_selector.value);
+
   const links = responseGetLinks.map((element) => element.url);
   initProgressBar(links.length);
 
@@ -85,7 +133,6 @@ async function start() {
 // add event listener
 start_button.addEventListener("click", start);
 
-
 // function home page
 function home() {
   window.location.href = "../index.html";
@@ -93,3 +140,20 @@ function home() {
 
 // add event listener
 home_button.addEventListener("click", home);
+
+//
+file_selector.addEventListener("change", () => {
+  while (message_container.firstChild) {
+    message_container.removeChild(message_container.firstChild);
+  } 
+  const title = document.createElement("h3");
+  title.textContent = "OUTPUT";
+  title.style.fontSize = "20px";
+  title.style.fontWeight = "800";
+  title.style.fontFamily = "Fira Sans, sans-serif";
+  title.style.color = "#efefef";
+  title.style.textAlign = "center";
+  title.style.userSelect = "none";
+  message_container.appendChild(title); 
+});
+
