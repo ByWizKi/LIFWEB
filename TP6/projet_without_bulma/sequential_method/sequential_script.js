@@ -45,13 +45,21 @@ async function checkLink(link) {
     const response = await fetch(apiUri, { method: "GET" });
     if (response.ok) {
       //debug
-      /* 
+      /*
       const data = await response.json();
       console.log(data.url);
-      */
-      return { isOk: true, url: apiUri };
+     */
+
+      const data = await response.json();
+
+      return {
+        isOk: true,
+        url: apiUri,
+        starsRating: data.stargazers_count,
+        nameOwner: data.name,
+      };
     } else {
-      return { isOk: false, url: apiUri };
+      return { isOk: false, url: apiUri, starsRating: 0, nameOwner: "NONE" };
     }
   } catch (error) {
     console.log(error);
@@ -94,17 +102,20 @@ function errorSelector() {
 
 // display link
 async function displayLink(linkCheck) {
-
   const title = document.createElement("h3");
   title.textContent = "OUTPUT";
   const message = document.createElement("p");
-  message.textContent = linkCheck.url;
+  message.textContent =
+    linkCheck.url +
+    " Rating: " +
+    linkCheck.starsRating +
+    " Owner: " +
+    linkCheck.nameOwner;
   message_container.appendChild(message);
   if (linkCheck.isOk) {
     message.style.color = "#484850";
     message.style.fontFamily = "Fira Sans, sans-serif";
     message.style.fontWeight = "500";
-
   } else {
     message.style.color = "#F24A72";
     message.style.fontFamily = "Fira Sans, sans-serif";
@@ -145,7 +156,7 @@ home_button.addEventListener("click", home);
 file_selector.addEventListener("change", () => {
   while (message_container.firstChild) {
     message_container.removeChild(message_container.firstChild);
-  } 
+  }
   const title = document.createElement("h3");
   title.textContent = "OUTPUT";
   title.style.fontSize = "20px";
@@ -154,6 +165,5 @@ file_selector.addEventListener("change", () => {
   title.style.color = "#efefef";
   title.style.textAlign = "center";
   title.style.userSelect = "none";
-  message_container.appendChild(title); 
+  message_container.appendChild(title);
 });
-
