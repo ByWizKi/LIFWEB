@@ -1,0 +1,102 @@
+body {
+  background: #272932;
+  margin: 0; /* Assure que le body prend toute la hauteur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  width: 80%;
+  height: 80%;
+
+  margin: 2%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  border-radius: 40px;
+  box-shadow: #efefef80 0px 5px 15px;
+
+  background-color: #efefef;
+}
+
+#title {
+  font-size: 5em;
+  font-family: "Madimi One", sans-serif;
+  font-style: bold;
+  color: #272932;
+  text-align: center;
+}
+
+#info_container {
+  display: flex;
+  justify-content: center;
+  align-items: space-arround;
+  flex-direction: row;
+}
+
+#info_container p {
+  font-size: 2em;
+  font-family: "Madimi One", sans-serif;
+  font-style: bold;
+  color: #272932;
+  text-align: center;
+}
+
+#second_container {
+  width: 80%;
+  display: flex;
+  justify-content: start;
+  align-items: space-arround;
+  flex-direction: row;
+}
+
+#level_container {
+  width: 75%;
+
+  display: flex;
+  justify-content: start;
+  align-items: space-arround;
+  flex-direction: column;
+
+  border: #272932 2px solid;
+  border-radius: 20px;
+}
+
+#progress_container {
+  width: 25%;
+  display: flex;
+  justify-content: start;
+  align-items: space-arround;
+  flex-direction: column;
+
+  border: #272932 2px solid;
+  border-radius: 20px;
+}
+
+#progress_text {
+  font-size: 2em;
+  font-family: "Madimi One", sans-serif;
+  font-style: bold;
+  color: #272932;
+  text-align: center;
+}
+
+#refresh_button {
+  font-size: 2em;
+  font-family: "Madimi One", sans-serif;
+  font-style: bold;
+  color: #272932;
+  text-align: center;
+}
+
+.button_level {
+  font-size: 2em;
+  font-family: "Madimi One", sans-serif;
+  font-style: bold;
+  color: #272932;
+  text-align: center;
+}

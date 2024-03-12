@@ -14,14 +14,16 @@
     <title>Level 1 TPCTF</title>
   </head>
   <body>
-    <h1>TPCTF LEVEL 1</h1>
+    <main id="main_container">
+      <h1>TP CTF LEVEL 1</h1>
 
-    <div id="container">
-      <button id="btn">Press</button>
-      <br />
-      <span id="hintText">
-        *il faut appuyer sur le bouton pour commencer les challanges</span
-      >
-    </div>
+      <div id="container">
+        <button id="get_challenge_button">Get chanllenge</button>
+        <div id="chanllenge_container"></div>
+        <input type="text" id="input_chanllenge" readonly />
+        <input type="text" id="input_url" readonly />
+        <button id="submit_button">Submit</button>
+      </div>
+    </main>
   </body>
 </html>

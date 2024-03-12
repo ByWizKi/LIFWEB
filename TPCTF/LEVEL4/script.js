@@ -1,13 +1,15 @@
-// On recup les elements du dom
+// Get element from dom
 const btn = document.querySelector("#btn");
 
-// On recup la cle API
+// Api key
 const apiKey = "5edd2a9f-cb69-489b-b958-59bb004de5d7";
 
 // URL
 const url = "https://lifweb.univ-lyon1.fr/level/4";
 
-// Fonction pour recup l'url pour demarrer le level 4
+//Object url, challange
+
+// Function level 4
 async function level4() {
   try {
     const response = await fetch(url, {
@@ -24,7 +26,8 @@ async function level4() {
     console.log(`Error in api request: ${error}`);
   }
 }
-//fonction start
+
+//Function start level 4
 async function startLevel4(url) {
   try {
     const response = await fetch(url, {
@@ -35,6 +38,27 @@ async function startLevel4(url) {
     });
     const data = await response.json();
     //debug
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(`Error in api request: ${error}`);
+  }
+}
+
+async function checkLevel4(url, challange) {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "X-Api-Key": apiKey,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        challenge: challange,
+      }),
+    });
+    const data = await response.json();
+    //debug
     // console.log(data);
     return data;
   } catch (error) {
@@ -42,13 +66,17 @@ async function startLevel4(url) {
   }
 }
 
-async function checkLevel4() {}
-
 // handler du bouton
-
 btn.addEventListener("click", async () => {
   try {
-    const response = await checkLevel4();
+    const getStartUrl = await level4();
+    const getData = await startLevel4(getStartUrl["href"]);
+    const urlChecking = getData["href"];
+    const challangeList = getData["challenges"];
+    Promise.all (
+      challangeList.map((challange) => checkLevel4(urlChecking, challange))
+    ).then((data) => console.log(data));
+
   } catch (error) {
     console.log(`Error in api request: ${error}`);
   }
