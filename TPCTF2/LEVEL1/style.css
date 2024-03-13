@@ -1,0 +1,41 @@
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  background-color: #3f3f3f;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin-top: 20px;
+}
+
+main .title {
+  color: #efefef;
+  font-size: 60px;
+  font-weight: 900;
+}
+
+#challenge_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+main .input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #efefef;
+  background-color: #efefef;
+}
