@@ -3,6 +3,7 @@ const buttonLevel1 = document.querySelector("#button_level1");
 const buttonLevel2 = document.querySelector("#button_level2");
 const buttonLevel3 = document.querySelector("#button_level3");
 const buttonLevel4 = document.querySelector("#button_level4");
+const buttonLevel5 = document.querySelector("#button_level5");
 
 const dataStatusSection = document.querySelector("#data_status_section");
 const buttonRefresh = document.querySelector("#button_refresh");
@@ -25,6 +26,10 @@ buttonLevel3.addEventListener("click", () => {
 
 buttonLevel4.addEventListener("click", () => {
   window.location.href = "LEVEL4/index.html";
+});
+
+buttonLevel5.addEventListener("click", () => {
+  window.location.href = "LEVEL5/index.html";
 });
 
 // handlers for status section
