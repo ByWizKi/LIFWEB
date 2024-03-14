@@ -56,7 +56,6 @@ async function startLevel1() {
 async function displayChallenge() {
   // Get Data
   const level1Data = await startLevel1();
-  console.log(level1Data);
 
   // Clear input
   inputUrl.value = "";
@@ -93,6 +92,55 @@ buttonGetChallenge.addEventListener("click", async () => {
 
 // Handler for submit button
 
+// function to display status
+function displayStatus(data) {
+  //main blur
+  const mainSection = document.querySelector("#main_section");
+  mainSection.style.filter = "blur(3px)";
+
+  // Create div
+  const divStatus = document.createElement("div");
+  divStatus.style.width = "50%";
+  divStatus.style.height = "50%";
+  divStatus.style.position = "absolute";
+  divStatus.style.display = "flex";
+  divStatus.style.justifyContent = "center";
+  divStatus.style.alignItems = "center";
+  divStatus.style.borderRadius = "10px";
+  divStatus.style.backgroundColor = "#efefef55";
+
+  // Success message
+  let text =
+    data["success"]["challenge"] === true &&
+    data["success"]["stage"] === true &&
+    data["success"]["level"] === true
+      ? "Challenge Accepted"
+      : "Challenge Rejected";
+
+  // Message status
+  const messageStatus = document.createElement("p");
+  messageStatus.innerText = `
+  The request took : ${data["duration_ms"]} ms
+    ${text}
+  `;
+  messageStatus.className = "subtitle";
+  messageStatus.style.color = "black";
+  messageStatus.style.fontWeight = "900";
+  messageStatus.style.textAlign = "center";
+
+  divStatus.append(messageStatus);
+
+  document.body.append(divStatus);
+  // Remove message status
+  setTimeout(() => {
+    divStatus.remove();
+    mainSection.style.filter = "none";
+    dataChallengeSection.innerHTML = "";
+    inputUrl.value = "";
+    inputChallenge.value = "";
+  }, 3000);
+}
+
 // function to check challenge
 
 async function checkChallenge() {
@@ -107,10 +155,13 @@ async function checkChallenge() {
         challenge: inputChallenge.value,
       }),
     });
+    if (!response.ok) {
+      throw new Error("Error to check challenge");
+    }
     const checkData = await response.json();
     //debug
     // console.log(checkData);
-    // displayStatus(checkData);
+    displayStatus(checkData);
     return checkData;
   } catch (error) {
     console.error(`Error to check challenge api: ${error}`);
@@ -121,6 +172,11 @@ buttonSubmit.addEventListener("click", async () => {
   buttonSubmit.className = "button is-large is-loading";
   setTimeout(async () => {
     buttonSubmit.className = "button is-large is-primary";
+    await checkChallenge();
   }, 1000);
-  await checkChallenge();
+});
+
+// handler for go home
+buttonGoHome.addEventListener("click", () => {
+  window.location.href = "../index.html";
 });
