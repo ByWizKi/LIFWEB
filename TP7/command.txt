@@ -1,0 +1,4 @@
+# Pour se connecter
+ssh -o IdentitiesOnly=yes -i ~/.ssh/p2207446.pem p2207446@lifweb-12207446.lifweb.os.univ-lyon1.fr -v
+# Pour se deconnecter
+logout
